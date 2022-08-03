@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+/// Main View of App
 struct ContentView: View {
     @StateObject var prospects = Prospects()
 

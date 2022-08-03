@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+/// Data Model for this class
 class Prospect: Identifiable, Codable {
     var id = UUID()
     var name = "Anonymous"
@@ -14,6 +15,7 @@ class Prospect: Identifiable, Codable {
     fileprivate(set) var isContacted = false
 }
 
+/// Data container for this app. This is injected into the Environment (specifically the TabView.)
 @MainActor class Prospects: ObservableObject {
     @Published private(set) var people: [Prospect]
     let saveKey = "SavedData"

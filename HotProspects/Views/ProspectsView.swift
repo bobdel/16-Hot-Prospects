@@ -10,14 +10,23 @@ import SwiftUI
 import UserNotifications
 
 struct ProspectsView: View {
+
+    // MARK: ProspectsView data state
+
     enum FilterType {
         case none, contacted, uncontacted
+
+
     }
+
+    // MARK: Properties
 
     @EnvironmentObject var prospects: Prospects
     @State private var isShowingScanner = false
 
     let filter: FilterType
+
+    // MARK: Body View
 
     var body: some View {
         NavigationView {
@@ -69,6 +78,9 @@ struct ProspectsView: View {
         }
     }
 
+    // MARK: Computed Properties
+
+    // display title based on state
     var title: String {
         switch filter {
         case .none:
@@ -80,6 +92,7 @@ struct ProspectsView: View {
         }
     }
 
+    // display prospects based on state
     var filteredProspects: [Prospect] {
         switch filter {
         case .none:
@@ -90,6 +103,8 @@ struct ProspectsView: View {
             return prospects.people.filter { !$0.isContacted }
         }
     }
+
+    // MARK: Helper Methods
 
     func handleScan(result: Result<ScanResult, ScanError>) {
         isShowingScanner = false
@@ -107,6 +122,8 @@ struct ProspectsView: View {
             print("Scanning failed: \(error.localizedDescription)")
         }
     }
+
+    // MARK: User Notifications
 
     func addNotification(for prospect: Prospect) {
         let center = UNUserNotificationCenter.current()

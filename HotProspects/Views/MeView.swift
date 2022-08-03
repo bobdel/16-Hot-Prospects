@@ -21,16 +21,16 @@ struct MeView: View {
         NavigationView {
             Form {
                 TextField("Name", text: $name)
-                    .textContentType(.name)
+                    .textContentType(.name) // helps autocomplete
                     .font(.title)
 
                 TextField("Email address", text: $emailAddress)
-                    .textContentType(.emailAddress)
+                    .textContentType(.emailAddress) // helps autocomplete
                     .font(.title)
 
                 Image(uiImage: qrCode)
                     .resizable()
-                    .interpolation(.none)
+                    .interpolation(.none) // keep the qr code intact
                     .scaledToFit()
                     .frame(width: 200, height: 200)
                     .contextMenu {
@@ -53,15 +53,19 @@ struct MeView: View {
         qrCode = generateQRCode(from: "\(name)\n\(emailAddress)")
     }
 
+    /// Generate a QR code from user's name \n email
+    /// converts:  String -> Data -> CIImage -> UIImage
     func generateQRCode(from string: String) -> UIImage {
         filter.message = Data(string.utf8)
 
         if let outputImage = filter.outputImage {
+            // cast to a CG image
             if let cgimg = context.createCGImage(outputImage, from: outputImage.extent) {
+                // cast to a UI Image
                 return UIImage(cgImage: cgimg)
             }
         }
-
+        // if above code fails. should never happen.
         return UIImage(systemName: "xmark.circle") ?? UIImage()
     }
 }

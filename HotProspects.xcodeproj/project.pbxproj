@@ -62,11 +62,9 @@
 			isa = PBXGroup;
 			children = (
 				515ABF3A276947480016C3F8 /* HotProspectsApp.swift */,
-				515ABF3C276947480016C3F8 /* ContentView.swift */,
 				51A854E12783A7EC00A8D52D /* Prospect.swift */,
-				51A854D927839F1200A8D52D /* ProspectsView.swift */,
-				51A854DB27839F1900A8D52D /* MeView.swift */,
-				51920CE02786536700C66951 /* ImageSaver.swift */,
+				7132871E2898729C00710BB7 /* Views */,
+				7132871F2898734100710BB7 /* Helpers */,
 				515ABF3E2769474A0016C3F8 /* Assets.xcassets */,
 				515ABF402769474A0016C3F8 /* Preview Content */,
 			);
@@ -79,6 +77,24 @@
 				515ABF412769474A0016C3F8 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		7132871E2898729C00710BB7 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				515ABF3C276947480016C3F8 /* ContentView.swift */,
+				51A854D927839F1200A8D52D /* ProspectsView.swift */,
+				51A854DB27839F1900A8D52D /* MeView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		7132871F2898734100710BB7 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				51920CE02786536700C66951 /* ImageSaver.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
