@@ -106,6 +106,7 @@ struct ProspectsView: View {
 
     // MARK: Helper Methods
 
+    // calls into the CodeScanner package to perform scan
     func handleScan(result: Result<ScanResult, ScanError>) {
         isShowingScanner = false
 

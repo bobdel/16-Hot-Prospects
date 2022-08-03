@@ -49,6 +49,7 @@ struct MeView: View {
         }
     }
 
+    /// Cache the QR Code
     func updateCode() {
         qrCode = generateQRCode(from: "\(name)\n\(emailAddress)")
     }

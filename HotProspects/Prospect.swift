@@ -12,13 +12,13 @@ class Prospect: Identifiable, Codable {
     var id = UUID()
     var name = "Anonymous"
     var emailAddress = ""
-    fileprivate(set) var isContacted = false
+    fileprivate(set) var isContacted = false // restrict toggle to the func below
 }
 
 /// Data container for this app. This is injected into the Environment (specifically the TabView.)
 @MainActor class Prospects: ObservableObject {
     @Published private(set) var people: [Prospect]
-    let saveKey = "SavedData"
+    let saveKey = "SavedData" // avoids 
 
     init() {
         if let data = UserDefaults.standard.data(forKey: saveKey) {
@@ -43,6 +43,11 @@ class Prospect: Identifiable, Codable {
         save()
     }
 
+    /// Mutate and save isContacted property
+    /// - Parameter prospect: prospect to mutate
+    /// - This function is required because SwiftUI doesn't re-render when a value
+    ///   inside a Prospect changes. It can only monitor the collection itself for changes.
+    ///   Therefore, the data is mutated and saved here after signaling SwiftUI.
     func toggle(_ prospect: Prospect) {
         objectWillChange.send()
         prospect.isContacted.toggle()
